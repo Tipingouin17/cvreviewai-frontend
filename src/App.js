@@ -1,25 +1,20 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [file, setFile] = useState(null);
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Logic to handle file submission goes here
+  const [cv, setCv] = useState('');
+  const handleUpload = () => {
+    // Logic to handle CV upload
   };
 
   return (
     <div>
-      <h1>CVReviewAI</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} accept=".pdf, .doc, .docx" />
-        <button type="submit">Upload CV</button>
-      </form>
-      {file && <p>File selected: {file.name}</p>}
+      <h1>CV Review AI</h1>
+      <textarea
+        value={cv}
+        onChange={(e) => setCv(e.target.value)}
+        placeholder="Paste your CV here..."
+      />
+      <button onClick={handleUpload}>Get Feedback</button>
     </div>
   );
 }
